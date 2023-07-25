@@ -33,6 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
         } else {
           this.token$ = this.authService.getToken();
           this.store.dispatch(new authAction.AuthorizationSuccess(response));
+          console.table(response);
         }
       });
 
@@ -43,5 +44,9 @@ export class AppComponent implements OnInit, OnDestroy {
     if (this.subscriptions.checkAuth) {
       this.subscriptions.checkAuth.unsubscribe();
     }
+  }
+
+  public onLogout() {
+    this.authService.logout();
   }
 }
