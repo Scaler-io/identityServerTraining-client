@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+// Define primary colors for the Material Design style
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+$table-container-margin: 20px;
+
+.movie__container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background-color: #f0f0f0;
+  &--inner {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    width: calc(100% - 5rem);
+    background-color: #fff;
+    padding-top: 2rem;
+    table {
+      border: none;
+    }
+    .heading {
+      font-size: 1.8rem;
+      text-align: center;
+      border-bottom: 1px solid #f0f0f0;
+      margin-left: 1.2rem;
+      margin-right: 1.2rem;
+      padding-bottom: 1.2rem;
+    }
+  }
+}
+
+.table-container {
+  overflow-x: auto;
+  margin: $table-container-margin;
+
+  // Material Design Table styles
+  .material-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    text-align: left;
+
+    thead {
+      background-color: $primary-color;
+      color: #fff;
+      font-weight: bold;
+    }
+
+    th {
+      font-size: 0.9rem; // You can add additional styles for the <th> elements here if needed.
+    }
+    td {
+      font-size: 0.8rem;
+    }
+
+    th,
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tbody tr:hover {
+      background-color: #f5f5f5;
+    }
+
+    td:last-child {
+      text-align: center;
+    }
+  }
+}
+
+// Media queries for responsiveness
+@media only screen and (max-width: 600px) {
+  .table-container {
+    overflow-x: scroll;
+  }
+
+  .material-table {
+    width: 100%;
+    max-width: 600px;
+  }
+}

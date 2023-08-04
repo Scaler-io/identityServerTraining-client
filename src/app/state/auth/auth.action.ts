@@ -7,4 +7,5 @@ export class AuthorizationSuccess implements Action {
   constructor(public payload: LoginResponse) {}
   type: string = AUTHORIZATION_SUCCESS;
 }
+
 export type AuthActions = AuthorizationSuccess;

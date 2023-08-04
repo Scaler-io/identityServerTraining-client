@@ -6,14 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(public oidcSecurityService: OidcSecurityService) {}
+  constructor(private oidcSecurityService: OidcSecurityService) {}
 
   public checkAuth(): Observable<LoginResponse> {
     return this.oidcSecurityService.checkAuth();
   }
 
-  public login() {
-    this.oidcSecurityService.authorize();
+  public login(configId?, authOptions?) {
+    this.oidcSecurityService.authorize(configId, authOptions);
   }
 
   public logout() {

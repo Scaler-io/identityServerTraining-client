@@ -3,6 +3,7 @@ import { LogLevel } from 'angular-auth-oidc-client';
 export interface IConfig {
   prod: boolean;
   oidcconfig: OidcConfig;
+  movieApiUrl: string;
 }
 
 export interface OidcConfig {

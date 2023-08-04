@@ -8,12 +8,18 @@ import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { appReducer } from './store/app.state';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CoreModule } from './core/core.module';
+import { AuthInterceptor } from './core/guards/auth.interceptor';
+import { HomeModule } from './feature/home/home.module';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HomeModule,
     AuthModule.forRoot({
       config: {
         authority: environment.oidcconfig.authority,
@@ -27,12 +33,16 @@ import { appReducer } from './store/app.state';
         logLevel: environment.oidcconfig.logLevel,
       },
     }),
+    CoreModule,
+    EffectsModule.forRoot([]),
     StoreModule.forRoot(appReducer),
     StoreDevtoolsModule.instrument({
       logOnly: environment.prod,
     }),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
