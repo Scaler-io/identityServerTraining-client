@@ -18,6 +18,7 @@ export function authReducer(state: AuthState, action: AuthActions): AuthState {
           firstName: action.payload.userData.given_name,
           lastName: action.payload.userData.family_name,
           isLoggedIn: action.payload.isAuthenticated,
+          role: action.payload.userData.role,
         },
         config: {
           accessToken: action.payload.accessToken,

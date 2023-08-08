@@ -2,7 +2,10 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { MovieService } from 'src/app/core/services/movie.service';
-import { isAuthenticated, getUserClaims } from 'src/app/state/auth/auth.selector';
+import {
+  isAuthenticated,
+  getUserClaims,
+} from 'src/app/state/auth/auth.selector';
 import { AppState } from 'src/app/store/app.state';
 import * as authActions from '../../state/auth/auth.action';
 
